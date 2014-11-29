@@ -51,7 +51,9 @@ datagate
     alias:'用户名必填', //为空时提示    
     err:'用户名格式错误' //格式错误时提示    
     value:"值" // 当nodejs环境的时候需要提供要检测的内容 value /id必填其一，共存时取value值    
-
+	
+	eg:    
+	
 	var a = [    
 	    {    
 	    	name:'username',//返回的数据键值，不填则使用id    
