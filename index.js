@@ -57,7 +57,7 @@
 			//预设正则
 			if((item.required || val.length !=0) && reg && typeof reg == 'string'){
 				//内部方法
-				if(!regs[reg].test(val)){
+				if(regs[reg] && !regs[reg].test(val)){
 					var tip = item.err || item.name + ' 格式错误'; //format err
 					errdata.push(tip);
 					callback && callback.call(null,item);
@@ -65,7 +65,7 @@
 			}
 			if((item.required || val.length !=0) && reg &&　Object.prototype.toString.call(reg) === '[object RegExp]'){
 				//正则匹配
-				if(!reg.test(val)){
+				if(reg && !reg.test(val)){
 					var tip = item.err || item.name + ' 格式错误';//format err
 					errdata.push(tip);
 					callback && callback.call(null,item);

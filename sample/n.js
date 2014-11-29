@@ -32,7 +32,6 @@ var a = [
         value:'xx'
     }
     ];
-console.log(gate(a).regexp('xx',/^[0-9]*$/).check());
 
 var t1 = gate(a).check();
     console.log(t1.getData());
