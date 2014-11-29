@@ -1,4 +1,4 @@
-(function(
+(function(){
 	var root    = this,
 		outdata = {},//输出的数据
 		errdata = [],//错误提示
@@ -16,26 +16,27 @@
 		};
 
 	var gate = function(obj){
-		if(!this instanceof gate) return new gate(obj);
+		if(!(this instanceof gate)) return new gate(obj);
 		this._data = obj;
+		return this;
 	};
 
 	//添加或者覆盖预设正则规则
-	gate.regexp = function(key,reg) {
+	gate.prototype.regexp = function(key,reg) {
 		if(typeof key === 'string') {
 			regs[key] = reg;
-			return gate;
+			return this;
 		}
 		if(Object.prototype.tostring.call(key) === '[object Object]') {
 			for(var i in key){
 				regs[i] = key[i];
 			}
 		}
-		return gate;
+		return this;
 	}
 	//检测数据
 	// @param callback function 错误的回调
-	gate.check = function(callback){
+	gate.prototype.check = function(callback){
 		for(var i=0;i<this._data.length;i++)
 		{
 			var item = this._data[i];
@@ -55,15 +56,15 @@
 			if((item.required || val.length !=0) && reg && typeof reg == 'string'){
 				//内部方法
 				if(!regs[reg].test(val)){
-					var tip = item.err || '格式错误'; //format err
+					var tip = item.err || item.name + ' 格式错误'; //format err
 					errdata.push(tip);
 					callback && callback.call(null,item);
 				}
 			}
-			if((item.required || val.length !=0) && reg &&　Object.prototype.toString.call(obj) === '[object RegExp]'){
+			if((item.required || val.length !=0) && reg &&　Object.prototype.toString.call(reg) === '[object RegExp]'){
 				//正则匹配
 				if(!reg.test(val)){
-					var tip = item.err || '格式错误';//format err
+					var tip = item.err || item.name + ' 格式错误';//format err
 					errdata.push(tip);
 					callback && callback.call(null,item);
 				}
@@ -74,20 +75,20 @@
 		return [errdata,outdata];
 	}
 	//get err if has error return error data
-	gate.getErr = function(){
+	gate.prototype.getErr = function(){
 		return haserr ? errdata : haserr;
 	}
 	//get data
-	gate.getData = function(){
+	gate.prototype.getData = function(){
 		return outdata;
 	}
 	//导出变量
 	if (isnode) {
 	  	exports = module.exports = gate;
 	} else {
-		root._ = _;
+		root.GateData = gate;
 	}
-))();
+})();
 
 /*
 [

@@ -25,6 +25,11 @@ var a = [
         name:'email',
         regexp:'email',
         value:"xx@q.com"
+    },
+    {
+        name:'xx',
+        regexp:'xx',
+        value:'xx'
     }
     ];
-console.log(gate(a).check().getErr());
+console.log(gate(a).regexp('xx',/^[0-9]*$/).check());
