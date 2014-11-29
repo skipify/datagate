@@ -6,7 +6,7 @@ datagate
 # INSTALL
 ## NODEJS
 	
-	npm install gatedata
+	npm install data-gate
 
 ## BROWER
 	

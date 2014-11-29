@@ -1,5 +1,5 @@
 {
-  "name": "datagate",
+  "name": "data-gate",
   "version": "0.0.1",
   "description": "valid input data for node and browser,验证输入数据适用于Node和浏览器",
   "main": "index.js",
