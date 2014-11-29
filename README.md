@@ -1,6 +1,4 @@
 datagate
 ========
 
-developping    
-
-valid data 
+主要用于验证数据格式是否正确，用于数据安全验证
