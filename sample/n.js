@@ -33,3 +33,16 @@ var a = [
     }
     ];
 console.log(gate(a).regexp('xx',/^[0-9]*$/).check());
+
+var t1 = gate(a).check();
+    console.log(t1.getData());
+
+var t2 = gate(a).regexp('xx',/^[0-9]*$/).check();
+    
+    if(!t2.getErr())
+    {
+        data = t2.getData();
+    }else{
+        console.log(t2.getErr());
+        console.log(t2.getData());
+    }

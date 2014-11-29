@@ -40,9 +40,11 @@
 		for(var i=0;i<this._data.length;i++)
 		{
 			var item = this._data[i];
-			if(!item.name) continue;
+			if(!item.name && !item.id) continue;
+			item.name = item.name || item.id;
 			if(item.value === undefined && !isnode && item.id) {
-				item.value = document.getElementById(item.id).value;
+				var ele =  document.getElementById(item.id);
+				item.value = ele ? ele.value : '';
 			}
 			var val  = item.value || '';
 
@@ -72,7 +74,7 @@
 			outdata[item.name] = val;
 		}
 		haserr = errdata.length >0 ? true : false;
-		return [errdata,outdata];
+		return this;
 	}
 	//get err if has error return error data
 	gate.prototype.getErr = function(){

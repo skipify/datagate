@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<script type="text/javascript" src="../index.js"></script>
+</head>
+<body>
+<form method="get">
+	<div class="control">
+	    <label for="username"><i class="fa fa-asterisk red"></i> Username</label> 
+	    <input type="text" value="" id="username">
+	</div>
+
+	<div class="control">
+	    <label for="password"><i class="fa fa-asterisk red"></i> Password</label> 
+	    <input type="password" value="" id="password1">
+	</div>
+	<div class="control">
+	    <label for="email">Email</label> 
+	    <input type="text" value="" id="email">
+	</div>
+	<a href="javascript:;" class="submit" id="save"> Save</a>
+</form>
+<script type="text/javascript">
+
+var a = [
+    {
+    	id:'username',//要过滤的值，浏览器时可以直接 document.getElementById('xx').value();
+        regexp:'username',
+        required:true,
+        alias:'用户名必填', //为空时提示
+        err:'用户名格式错误' //格式错误时提示
+    },
+    {
+        name:'password',
+        id:"password1",
+        regexp:'password',
+        required:true,
+        alias:'密码必填',
+        err:'密码请填写6-20位'
+    },
+    {
+        regexp:'email',
+        id:"email"
+    }
+
+    ];
+
+
+
+	document.getElementById('save').onclick = function(){
+		var t1 = GateData(a);
+			//t1.regexp('xx',/^[0-9]*$/)
+			t1.check();
+			var err;
+		    if(err = t1.getErr())
+		    {
+		    	console.log(err);
+		    }else{
+		        var data = t1.getData();
+		        console.log(data);
+		    }
+	}
+
+</script>
+</body>
+</html>
