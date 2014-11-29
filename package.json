@@ -1,0 +1,14 @@
+{
+  "name": "datagate",
+  "version": "0.0.1",
+  "description": "datagate ========",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "valid"
+  ],
+  "author": "skipify@qq.com",
+  "license": "MIT"
+}
