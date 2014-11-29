@@ -88,7 +88,7 @@
 	if (isnode) {
 	  	exports = module.exports = gate;
 	} else {
-		root.GateData = gate;
+		root.DataGate = gate;
 	}
 })();
 
