@@ -84,6 +84,50 @@
 	gate.prototype.getData = function(){
 		return outdata;
 	}
+
+	/*
+		单个检查
+	*/
+	gate.prototype.isType = function(val,regexp){
+		if(!val){
+			if(this._data && typeof this._data === 'string' || typeof this._data === 'number'){
+				val = this._data;
+			}
+		}
+		if(!val) return null;
+		if(typeof regexp === 'string'){
+			if(!regs[regexp]){
+				throw new Error('Not found RegExp Object');
+			}
+			var regexp = regs[regexp];
+		}
+		return regexp.test(val);
+	}
+	/*
+		整形
+	*/
+	gate.prototype.isInt = function(val){
+		return this.isType(val,'digit');
+	}
+	/*
+		email
+	*/
+	gate.prototype.isEmail = function(val){
+		return this.isType(val,'email');
+	}
+	/*
+		isurl
+	*/
+	gate.prototype.isUrl = function(val){
+		return this.isType(val,'url');
+	}
+	/*
+		phone
+	*/
+	gate.prototype.isPhone = function(val){
+		return this.isType(val,'phone');
+	}
+
 	//导出变量
 	if (isnode) {
 	  	exports = module.exports = gate;

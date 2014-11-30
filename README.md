@@ -90,3 +90,31 @@ datagate
 	*phone* : /^1[0-9]{10}$/ 电话    
 
 [更多规则](https://github.com/javaquery/regexp)
+
+# 单个字符串的处理
+
+	Notice:  is系列函数 可以指定一个参数 也可以使用gate参数  gate(1).isInt() === gate().isInt(1)
+
+### isType
+	@param int/string
+	@param string/RegExp
+	是否符合某个正则条件
+	
+
+### isInt     
+	@param int/string
+	是否是整形
+
+### isEmail     
+	@param int/string
+	是否是邮箱
+
+### isPhone     
+	@param int/string
+	是否是手机号码
+
+### isUrl     
+	@param int/string
+	是否是一个url连接
+
+
