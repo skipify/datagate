@@ -39,7 +39,8 @@
 	gate.prototype.check = function(callback){
 		for(var i=0;i<this._data.length;i++)
 		{
-			var item = this._data[i];
+			var item = this._data[i],
+				_haserr = false;//标示一下错误，防止重复提示
 			if(!item.name && !item.id) continue;
 			item.name = item.name || item.id;
 			if(item.value === undefined && !isnode && item.id) {
@@ -51,27 +52,31 @@
 			if(item.required && val.length == 0){
 				var tip = item.alias || '信息不完整'; //info is empty
 				errdata.push(tip);
+				_haserr  = true;
 				callback && callback.call(null,item);
 			}
 			var reg = item.regexp;
 			//预设正则
-			if((item.required || val.length !=0) && reg && typeof reg == 'string'){
+			if(!_haserr && (item.required || val.length !=0) && reg && typeof reg == 'string'){
 				//内部方法
 				if(regs[reg] && !regs[reg].test(val)){
 					var tip = item.err || item.name + ' 格式错误'; //format err
 					errdata.push(tip);
+					_haserr  = true;
 					callback && callback.call(null,item);
 				}
 			}
-			if((item.required || val.length !=0) && reg &&　Object.prototype.toString.call(reg) === '[object RegExp]'){
+			if(!_haserr && (item.required || val.length !=0) && reg &&　Object.prototype.toString.call(reg) === '[object RegExp]'){
 				//正则匹配
 				if(reg && !reg.test(val)){
 					var tip = item.err || item.name + ' 格式错误';//format err
 					errdata.push(tip);
+					_haserr  = true;
 					callback && callback.call(null,item);
 				}
 			}
 			outdata[item.name] = val;
+			_haserr  = false;
 		}
 		haserr = errdata.length >0 ? true : false;
 		return this;
