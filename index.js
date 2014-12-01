@@ -37,12 +37,14 @@
 	//检测数据
 	// @param callback function 错误的回调
 	gate.prototype.check = function(callback){
+		errdata = [],outdata = {};
 		for(var i=0;i<this._data.length;i++)
 		{
 			var item = this._data[i],
 				_haserr = false;//标示一下错误，防止重复提示
 			if(!item.name && !item.id) continue;
 			item.name = item.name || item.id;
+			item.id   = item.id   || item.name;
 			if(item.value === undefined && !isnode && item.id) {
 				var ele =  document.getElementById(item.id);
 				item.value = ele ? ele.value : '';
