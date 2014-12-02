@@ -1,3 +1,4 @@
+//0.0.6
 (function(){
 	var root    = this,
 		outdata = {},//输出的数据
@@ -16,7 +17,7 @@
 		};
 
 	var gate = function(obj,req){
-		if(!(this instanceof gate)) return new gate(obj);
+		if(!(this instanceof gate)) return new gate(obj,req);
 		this._data = obj;
 		this.req   = req;
 		return this;
