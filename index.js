@@ -15,9 +15,10 @@
 		'phone' : /^1[0-9]{10}$/
 		};
 
-	var gate = function(obj){
+	var gate = function(obj,req){
 		if(!(this instanceof gate)) return new gate(obj);
 		this._data = obj;
+		this.req   = req;
 		return this;
 	};
 
@@ -48,6 +49,10 @@
 			if(item.value === undefined && !isnode && item.id) {
 				var ele =  document.getElementById(item.id);
 				item.value = ele ? ele.value : '';
+			}
+			//node时获取数据
+			if(item.value === undefined && isnode){
+				item.value = this.req && this.req.body[item.name];
 			}
 			var val  = item.value || '';
 

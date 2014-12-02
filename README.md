@@ -15,6 +15,8 @@ datagate
 ## API
 	
 	var gate = gate(xx);
+	@param object 获取信息的配置文件
+	@param object node环境下的req对象，用于自动获取 req.body的内容
 
 ### regexp
 	添加一个正则验证规则
@@ -50,7 +52,8 @@ datagate
     required:true,//是否为必填，默认false,如果非必填则为空时不进行regexp的监测    
     alias:'用户名必填', //为空时提示    
     err:'用户名格式错误' //格式错误时提示    
-    value:"值" // 当nodejs环境的时候需要提供要检测的内容 value /id必填其一，共存时取value值    
+    value:"值" // 当nodejs环境的时候需要提供要检测的内容 value /id，共存时取value值 
+    		   //node 环境下id value均可为undefined 此时自动根据name属性在req.body中取值   
 	
 	eg:    
 	
