@@ -39,7 +39,7 @@
 	//检测数据
 	// @param callback function 错误的回调
 	gate.prototype.check = function(callback){
-		errdata = [],outdata = {};
+		errdata = [],outdata = {},equals={};
 		for(var i=0;i<this._data.length;i++)
 		{
 			var item = this._data[i],
@@ -84,7 +84,17 @@
 				}
 			}
 			outdata[item.name] = val;
+			if(item.equal){
+				equals[item.equal] = item;
+			}
 			_haserr  = false;
+		}
+		if(equals !== undefined){
+			for(var key in equals){
+				if(outdata[key] != outdata[equals[key].name]){
+					errdata.push(equals[key].err);
+				}
+			}
 		}
 		haserr = errdata.length >0 ? true : false;
 		return this;

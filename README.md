@@ -64,8 +64,9 @@ datagate
 	        regexp:'username',//预设的正则表达式名    
 	        required:true,//是否为必填，默认false,如果非必填则为空时不进行regexp的监测    
 	        alias:'用户名必填', //为空时提示    
-	        err:'用户名格式错误' //格式错误时提示    
-	        value:"值" // 当nodejs环境的时候需要提供要检测的内容 value /id必填其一，共存时取value值    
+	        err:'用户名格式错误', //格式错误时提示    
+	        value:"值", // 当nodejs环境的时候需要提供要检测的内容 value /id必填其一，共存时取value值  
+	        equal:"password" // 必须保证当前字段的值与 name为 password的值相等，如果不相等则提示err错误信息  
 	    },    
 	    {    
 	        name:'password',    

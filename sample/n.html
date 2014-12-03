@@ -17,6 +17,11 @@
 	    <input type="password" value="" id="password1">
 	</div>
 	<div class="control">
+	    <label for="repassword1"><i class="fa fa-asterisk red"></i> Password</label> 
+	    <input type="password" value="" id="repassword1">
+	</div>
+
+	<div class="control">
 	    <label for="email">Email</label> 
 	    <input type="text" value="" id="email">
 	</div>
@@ -39,6 +44,13 @@ var a = [
         required:true,
         alias:'密码必填',
         err:'密码请填写6-20位'
+    },
+    {
+    	name:"repassword",
+    	id:"repassword1",
+    	required:true,
+    	equal:"password",
+    	err:"两次密码不一致"
     },
     {
         regexp:'email',
