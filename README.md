@@ -54,7 +54,7 @@ datagate
     err:'用户名格式错误' //格式错误时提示    
     value:"值" // 当nodejs环境的时候需要提供要检测的内容 value /id，共存时取value值 
     		   //node 环境下id value均可为undefined 此时自动根据name属性在req.body中取值   
-	
+	equal:"password" // 必须保证当前字段的值与 name为 password的值相等，如果不相等则提示err错误信息  
 	eg:    
 	
 	var a = [    
