@@ -13,7 +13,10 @@
 		'url' : /((https?\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/,
 		'username' : /^[a-z0-9_-]{3,15}$/,
 		'password' :  /.{6,20}/,
-		'phone' : /^1[0-9]{10}$/
+		'phone' : /^1[0-9]{10}$/,
+		'hanzi' : /^[\u4e00-\u9fa5],{0,}$/,
+		'letter' : /^[a-z]+$/i,
+		'alphanum' : /^[a-z0-9]+$/i
 		};
 
 	var gate = function(obj,req){
@@ -149,6 +152,24 @@
 	*/
 	gate.prototype.isPhone = function(val){
 		return this.isType(val,'phone');
+	}
+	/*
+		hanzi
+	*/
+	gate.prototype.isHanzi = function(val){
+		return this.isType(val,'hanzi');
+	}
+	/*
+		letter
+	*/
+	gate.prototype.isLetter = function(val){
+		return this.isType(val,'letter');
+	}
+	/*
+		alphanum
+	*/
+	gate.prototype.isAlphaNum = function(val){
+		return this.isType(val,'alphanum');
 	}
 
 	//导出变量
