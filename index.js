@@ -1,4 +1,5 @@
 //0.0.6
+//验证数据格式
 (function(){
 	var root    = this,
 		outdata = {},//输出的数据
